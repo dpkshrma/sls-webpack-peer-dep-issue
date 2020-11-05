@@ -1,0 +1,26 @@
+service: sls-webpack-peer-dep-issue
+
+provider:
+  name: aws
+  versionFunctions: false
+  runtime: nodejs12.x
+  region: ap-south-1
+  apiGateway:
+    shouldStartNameWithService: true
+
+plugins:
+  - serverless-webpack
+
+custom:
+  enterprise:
+    disabled: true
+  webpack:
+    webpackConfig: webpack.config.js
+    includeModules: true
+    packager: "yarn"
+
+functions:
+  app:
+    handler: index.default
+    events:
+      - http: ANY /{any+}
