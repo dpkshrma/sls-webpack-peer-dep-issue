@@ -12,8 +12,6 @@ plugins:
   - serverless-webpack
 
 custom:
-  enterprise:
-    disabled: true
   webpack:
     webpackConfig: webpack.config.js
     includeModules: true
